@@ -1,5 +1,5 @@
 import React from 'react';
-import gymImage from '../images/gym.jpg';
+import gymImage from '../../../images/gym.jpg';
 
 const HomePage = () => {
   return (

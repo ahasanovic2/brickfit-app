@@ -83,8 +83,8 @@ export default function Appbar() {
               open={Boolean(loginAnchorEl)}
               onClose={handleLoginClose}
             >
-              <MenuItem onClick={handleLoginClose}>Admin Login</MenuItem>
-              <MenuItem onClick={handleLoginClose}>User Login</MenuItem>
+              <MenuItem onClick={handleLoginClose} component={Link} to="/admin-login">Admin Login</MenuItem>
+              <MenuItem onClick={handleLoginClose} component={Link} to="/user-login">User Login</MenuItem>
             </Menu>
           </div>
           <div>
@@ -101,8 +101,8 @@ export default function Appbar() {
               open={Boolean(signupAnchorEl)}
               onClose={handleSignupClose}
             >
-              <MenuItem onClick={handleSignupClose}>Admin Signup</MenuItem>
-              <MenuItem onClick={handleSignupClose}>User Signup</MenuItem>
+              <MenuItem onClick={handleSignupClose} component={Link} to="/admin-signup">Admin Signup</MenuItem>
+              <MenuItem onClick={handleSignupClose} component={Link} to="/user-signup">User Signup</MenuItem>
             </Menu>
           </div>
         </Toolbar>

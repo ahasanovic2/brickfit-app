@@ -1,24 +1,28 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Appbar from "./notLogged/Appbar";
-import HomePage from "./notLogged/Homepage";
-import Korisnik from "./notLogged/Korisnik";
-import AppbarLoggedIn from "./userLoggedIn/AppbarLoggedIn";
-import LoginPage from './notLogged/Login';
-import News from './News'
-import Location from './Location'
-import Contact from './Contact'
+import Home from "./components/not_logged/home/Home";
+import HomeContact from "./components/not_logged/contact/HomeContact";
+import HomeLocation from "./components/not_logged/location/HomeLocation";
+import HomeNews from "./components/not_logged/news/HomeNews";
+import HomeLogin from "./components/not_logged/userLogin/UserHomeLogin";
+import AdminLogin from "./components/not_logged/adminLogin/AdminHomeLogin";
+import UserHomeSignup from "./components/not_logged/userSignup/UserHomeSignup";
+import AdminHomeSignup from "./components/not_logged/adminSignup/AdminHomeSignup";
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Appbar/>
         <Routes>
-          <Route path="/news" element={<News/>}/>
-          <Route path="/" element={<HomePage/>}/>
-          <Route path="/location" element={<Location/>}/>
-          <Route path="/contact" element={<Contact/>}/>
+          <Route path="/home" element={<Home/>}/>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/contact" element={<HomeContact/>}/>
+          <Route path="/location" element={<HomeLocation/>}/>
+          <Route path="/news" element={<HomeNews/>}/>
+          <Route path="/user-login" element={<HomeLogin/>}/>
+          <Route path="/admin-login" element={<AdminLogin/>}/>
+          <Route path="/user-signup" element={<UserHomeSignup/>}/>
+          <Route path="/admin-signup" element={<AdminHomeSignup/>}/>
         </Routes>
       </Router>
     </div>

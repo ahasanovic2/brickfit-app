@@ -1,5 +1,5 @@
 import React from 'react';
-import locationImage from './images/lokacija.png';
+import locationImage from '../../../images/lokacija.png';
 
 const Location = () => {
   return (
