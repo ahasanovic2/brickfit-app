@@ -1,9 +1,14 @@
 package ba.ppis.tim2.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Korisnik {
@@ -11,11 +16,17 @@ public class Korisnik {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "ime")
+    @NotBlank(message = "Ime ne smije biti prazno!")
+    @Size(min = 3, max = 255, message = "Ime mora imati barem 3 karaktera")
     private String ime;
     @Column(name = "prezime")
+    @NotBlank(message = "Prezime ne smije biti prazno!")
+    @Size(min = 2, max = 255, message = "Prezime mora imati barem 2 karaktera")
     private String prezime;
 
     @Column(name = "email")
+    @Email(message = "Email is not valid", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
+    @NotBlank(message = "Mail ne smije biti prazan")
     private String email;
     @Column(name = "adresa")
     private String adresa;
@@ -27,7 +38,31 @@ public class Korisnik {
     @Column(name = "spol")
     private String spol;
 
+    @Column(name = "recenzije")
+    @OneToMany(mappedBy = "korisnik")
+    @JsonIgnore
+    private List<Recenzija> recenzije;
+
+
     public Korisnik() {
+    }
+
+    public Korisnik(String ime, String prezime, String email, String adresa, String brojTelefona, LocalDate datumRodjenja, String spol) {
+        this.ime = ime;
+        this.prezime = prezime;
+        this.email = email;
+        this.adresa = adresa;
+        this.brojTelefona = brojTelefona;
+        this.datumRodjenja = datumRodjenja;
+        this.spol = spol;
+    }
+
+    public List<Recenzija> getRecenzije() {
+        return recenzije;
+    }
+
+    public void setRecenzije(List<Recenzija> recenzije) {
+        this.recenzije = recenzije;
     }
 
     public int getId() {

@@ -21,12 +21,6 @@ function UserSignup() {
           sx={{ marginBottom: 2 }}
         />
         <TextField 
-          label="Phone Number" 
-          variant="outlined"
-          fullWidth 
-          sx={{ marginBottom: 2 }}
-        />
-        <TextField 
           label="Email" 
           variant="outlined" 
           type="email" 
