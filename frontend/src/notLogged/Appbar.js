@@ -8,6 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from 'react-router-dom';
 
 export default function Appbar() {
   const [loginAnchorEl, setLoginAnchorEl] = React.useState(null);
@@ -60,10 +61,10 @@ export default function Appbar() {
             open={Boolean(menuAnchorEl)}
             onClose={handleMenuClose}
           >
-            <MenuItem onClick={handleMenuClose}>News</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Homepage</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Location</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Contact</MenuItem>
+            <MenuItem onClick={handleMenuClose} component={Link} to="/">Homepage</MenuItem>
+            <MenuItem onClick={handleMenuClose} component={Link} to="/news">News</MenuItem>
+            <MenuItem onClick={handleMenuClose} component={Link} to="/location">Location</MenuItem>
+            <MenuItem onClick={handleMenuClose} component={Link} to="/contact">Contact</MenuItem>
           </Menu>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Brick Fit
