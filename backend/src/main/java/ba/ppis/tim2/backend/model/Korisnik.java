@@ -38,31 +38,12 @@ public class Korisnik {
     @Column(name = "spol")
     private String spol;
 
-    @Column(name = "recenzije")
+    @Column
     @OneToMany(mappedBy = "korisnik")
     @JsonIgnore
-    private List<Recenzija> recenzije;
-
+    private List<Recenzija> recenzija;
 
     public Korisnik() {
-    }
-
-    public Korisnik(String ime, String prezime, String email, String adresa, String brojTelefona, LocalDate datumRodjenja, String spol) {
-        this.ime = ime;
-        this.prezime = prezime;
-        this.email = email;
-        this.adresa = adresa;
-        this.brojTelefona = brojTelefona;
-        this.datumRodjenja = datumRodjenja;
-        this.spol = spol;
-    }
-
-    public List<Recenzija> getRecenzije() {
-        return recenzije;
-    }
-
-    public void setRecenzije(List<Recenzija> recenzije) {
-        this.recenzije = recenzije;
     }
 
     public int getId() {
@@ -127,5 +108,13 @@ public class Korisnik {
 
     public void setSpol(String spol) {
         this.spol = spol;
+    }
+
+    public List<Recenzija> getRecenzija() {
+        return recenzija;
+    }
+
+    public void setRecenzija(List<Recenzija> recenzija) {
+        this.recenzija = recenzija;
     }
 }

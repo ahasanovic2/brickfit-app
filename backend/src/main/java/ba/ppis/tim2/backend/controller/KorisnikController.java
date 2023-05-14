@@ -17,7 +17,6 @@ public class KorisnikController {
     @PostMapping("/dodajKorisnika")
     public ResponseEntity dodajKorisnika(@RequestBody Korisnik korisnik) {
         return korisnikService.spasiKorisnika(korisnik);
-        //return "Novi korisnik je uspješno dodan!";
     }
 
     @GetMapping("/korisnici")
