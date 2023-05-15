@@ -1,5 +1,6 @@
-package ba.ppis.tim2.backend.model;
+package ba.ppis.tim2.backend.DTO;
 
+import ba.ppis.tim2.backend.model.Recenzija;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -10,32 +11,45 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity
-public class Korisnik {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class KorisnikDTO {
+
     private int id;
-    @Column(name = "ime")
-    @NotBlank(message = "Ime ne smije biti prazno!")
-    @Size(min = 3, max = 255, message = "Ime mora imati barem 3 karaktera")
+
     private String ime;
-    @Column(name = "prezime")
-    @NotBlank(message = "Prezime ne smije biti prazno!")
-    @Size(min = 2, max = 255, message = "Prezime mora imati barem 2 karaktera")
+
     private String prezime;
 
-    @Column(name = "email")
-    @Email(message = "Email is not valid", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
-    @NotBlank(message = "Mail ne smije biti prazan")
-    private String email;
 
-    @Column(name = "password")
-    @NotBlank(message = "Password ne smije biti prazan")
+    private String email;
     private String password;
-    @Column(name = "adresa")
+
+    public KorisnikDTO(int id, String ime, String prezime, String email, String password, String adresa, String brojTelefona, LocalDate datumRodjenja, String spol, List<Recenzija> recenzija) {
+        this.id = id;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.email = email;
+        this.password = password;
+        this.adresa = adresa;
+        this.brojTelefona = brojTelefona;
+        this.datumRodjenja = datumRodjenja;
+        this.spol = spol;
+        this.recenzija = recenzija;
+    }
+
     private String adresa;
-    @Column(name = "broj_telefona")
+
     private String brojTelefona;
+
+    private LocalDate datumRodjenja;
+    private String spol;
+    private List<Recenzija> recenzija;
+
+
+
+
+    public KorisnikDTO() {
+    }
+
 
     public String getPassword() {
         return password;
@@ -43,35 +57,6 @@ public class Korisnik {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    @Column(name = "datum_rodjenja")
-    @JsonFormat(pattern = "dd.MM.yyyy")
-    private LocalDate datumRodjenja;
-    @Column(name = "spol")
-    private String spol;
-
-    @Column
-    @OneToMany(mappedBy = "korisnik")
-    @JsonIgnore
-    private List<Recenzija> recenzija;
-
-    public Korisnik() {
-    }
-
-    public Korisnik(int id, String ime, String prezime, String email, String adresa, String brojTelefona, LocalDate datumRodjenja, String spol, List<Recenzija> recenzija, String encode) {
-    }
-
-    public Korisnik(int id, String ime, String prezime, String email, String adresa, String brojTelefona, LocalDate datumRodjenja, String spol, List<Recenzija> recenzija) {
-        this.id = id;
-        this.ime = ime;
-        this.prezime = prezime;
-        this.email = email;
-        this.adresa = adresa;
-        this.brojTelefona = brojTelefona;
-        this.datumRodjenja = datumRodjenja;
-        this.spol = spol;
-        this.recenzija = recenzija;
     }
 
     public int getId() {
@@ -144,5 +129,20 @@ public class Korisnik {
 
     public void setRecenzija(List<Recenzija> recenzija) {
         this.recenzija = recenzija;
+    }
+
+    @Override
+    public String toString() {
+        return "KorisnikDTO{" +
+                "id=" + id +
+                ", ime='" + ime + '\'' +
+                ", prezime='" + prezime + '\'' +
+                ", email='" + email + '\'' +
+                ", adresa='" + adresa + '\'' +
+                ", brojTelefona='" + brojTelefona + '\'' +
+                ", datumRodjenja=" + datumRodjenja +
+                ", spol='" + spol + '\'' +
+                ", recenzija=" + recenzija +
+                '}';
     }
 }
