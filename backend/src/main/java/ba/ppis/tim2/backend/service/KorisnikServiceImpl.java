@@ -1,8 +1,11 @@
 package ba.ppis.tim2.backend.service;
 
+import ba.ppis.tim2.backend.errorHandler.VecPostojiException;
 import ba.ppis.tim2.backend.model.Korisnik;
 import ba.ppis.tim2.backend.repository.KorisnikRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,8 +16,12 @@ public class KorisnikServiceImpl implements KorisnikService {
     private KorisnikRepository korisnikRepository;
 
     @Override
-    public Korisnik spasiKorisnika(Korisnik korisnik) {
-        return korisnikRepository.save(korisnik);
+    public ResponseEntity spasiKorisnika(Korisnik korisnik) {
+        Korisnik k = korisnikRepository.findByEmail(korisnik.getEmail());
+        if(k == null)
+            return new ResponseEntity(korisnikRepository.save(korisnik), HttpStatus.OK);
+        else
+            throw new VecPostojiException("Korisnik sa datim emailom vec postoji!");
     }
 
     @Override

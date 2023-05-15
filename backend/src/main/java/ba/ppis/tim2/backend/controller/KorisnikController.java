@@ -3,6 +3,7 @@ package ba.ppis.tim2.backend.controller;
 import ba.ppis.tim2.backend.model.Korisnik;
 import ba.ppis.tim2.backend.service.KorisnikService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,9 +15,8 @@ public class KorisnikController {
     private KorisnikService korisnikService;
 
     @PostMapping("/dodajKorisnika")
-    public String dodajKorisnika(@RequestBody Korisnik korisnik) {
-        korisnikService.spasiKorisnika(korisnik);
-        return "Novi korisnik je uspješno dodan!";
+    public ResponseEntity dodajKorisnika(@RequestBody Korisnik korisnik) {
+        return korisnikService.spasiKorisnika(korisnik);
     }
 
     @GetMapping("/korisnici")
