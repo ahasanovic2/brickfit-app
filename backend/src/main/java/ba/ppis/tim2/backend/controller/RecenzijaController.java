@@ -18,7 +18,7 @@ public class RecenzijaController {
     private RecenzijaService recenzijaService;
 
     @PostMapping("/recenzija/{id}")
-    public ResponseEntity dodajRecenzijuZaKorisnika(@PathVariable int id, @RequestBody Recenzija recenzija) {
+    public ResponseEntity dodajRecenzijuZaKorisnika(@PathVariable Long id, @RequestBody Recenzija recenzija) {
         return recenzijaService.dodajRecenzijuZaKorisnika(id, recenzija);
     }
 

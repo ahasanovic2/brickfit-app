@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class KorisnikServiceImpl implements KorisnikService {
@@ -17,8 +18,8 @@ public class KorisnikServiceImpl implements KorisnikService {
 
     @Override
     public ResponseEntity spasiKorisnika(Korisnik korisnik) {
-        Korisnik k = korisnikRepository.findByEmail(korisnik.getEmail());
-        if(k == null)
+        Optional<Korisnik> k = korisnikRepository.findByEmail(korisnik.getEmail());
+        if(k.isEmpty())
             return new ResponseEntity(korisnikRepository.save(korisnik), HttpStatus.OK);
         else
             throw new VecPostojiException("Korisnik sa datim emailom vec postoji!");

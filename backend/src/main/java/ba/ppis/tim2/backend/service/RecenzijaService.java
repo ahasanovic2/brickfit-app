@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface RecenzijaService {
-    ResponseEntity dodajRecenzijuZaKorisnika(int id, Recenzija recenzija);
+    ResponseEntity dodajRecenzijuZaKorisnika(Long id, Recenzija recenzija);
 
     public List<Recenzija> dajSveRecenzije();
 }

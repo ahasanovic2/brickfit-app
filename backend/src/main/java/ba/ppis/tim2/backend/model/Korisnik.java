@@ -9,12 +9,13 @@ import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Korisnik {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @Column(name = "ime")
     @NotBlank(message = "Ime ne smije biti prazno!")
     @Size(min = 3, max = 255, message = "Ime mora imati barem 3 karaktera")
@@ -30,6 +31,9 @@ public class Korisnik {
     private String email;
     @Column(name = "adresa")
     private String adresa;
+
+    private String password;
+
     @Column(name = "broj_telefona")
     private String brojTelefona;
     @Column(name = "datum_rodjenja")
@@ -43,14 +47,20 @@ public class Korisnik {
     @JsonIgnore
     private List<Recenzija> recenzija;
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    private Set<Role> roles;
+
     public Korisnik() {
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -116,5 +126,21 @@ public class Korisnik {
 
     public void setRecenzija(List<Recenzija> recenzija) {
         this.recenzija = recenzija;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

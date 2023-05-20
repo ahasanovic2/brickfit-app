@@ -27,7 +27,7 @@ public class RecenzijaServiceImpl implements RecenzijaService{
         return recenzijaRepository.findAll();
     }
     @Override
-    public ResponseEntity dodajRecenzijuZaKorisnika(int id, Recenzija recenzija){
+    public ResponseEntity dodajRecenzijuZaKorisnika(Long id, Recenzija recenzija){
         var korisnik = korisnikRepository.findById(id).orElse(null);
         if(korisnik != null) {
             recenzija.setKorisnik(korisnik);
