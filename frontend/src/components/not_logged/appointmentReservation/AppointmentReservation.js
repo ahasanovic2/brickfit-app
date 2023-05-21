@@ -27,6 +27,18 @@ export default function AppointmentReservation() {
     });
   };
 
+  useEffect(() => {
+    fetch("http://localhost:8080/termini")
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(
+          "USLO",
+          result.map((el) => el.termin)
+        );
+        setDbAppointments(result.map((el) => el.termin));
+      });
+  }, []);
+
   const allAppointments = [
     "Monday 09:00-10:00",
     "Monday 10:00-11:00",
@@ -135,6 +147,8 @@ export default function AppointmentReservation() {
     "Sunday 23:00-24:00",
   ];
 
+  const [dbAppointments, setDbAppointments] = useState(null);
+
   const allTrainings = ["Individual training", "Training in pair", "Group training"];
   const allTrainers = ["Muhamed Borovac", "Vedad Dervisevic", "Ahmedin Hasanovic", "Benjamin Pasic", "Admir Pozderac"];
   const allTrainingTypes = ["Cardio", "Fitness", "Crossfit", "Dumbbells"];
@@ -142,7 +156,7 @@ export default function AppointmentReservation() {
   return (
     <Container>
       <Paper elevation={3} style={paperStyle}>
-        <h1 style={{ color: "#1976d2" }}>Appointment reservation</h1>
+        <h1 style={{ color: "#1976d2" }}>Rezervacija termina</h1>
         <Box
           component="form"
           sx={{
@@ -154,19 +168,19 @@ export default function AppointmentReservation() {
           <Autocomplete
             disablePortal
             id="combo-box-demo"
-            options={allAppointments}
-            renderInput={(params) => <TextField {...params} label="Appointment" />}
+            options={dbAppointments != null ? allAppointments.filter((el) => !dbAppointments.includes(el)) : allAppointments}
+            renderInput={(params) => <TextField {...params} label="Termin" />}
             onChange={(e, newValue) => {
               setAppointment(newValue);
             }}
           />
-          <Autocomplete disablePortal id="combo-box-demo" options={allTrainings} renderInput={(params) => <TextField {...params} label="Training" />} onChange={(e, newValue) => setTraining(newValue)} />
-          <Autocomplete disablePortal id="combo-box-demo" options={allTrainers} renderInput={(params) => <TextField {...params} label="Trainer" />} onChange={(e, newValue) => setTrainer(newValue)} />
-          <Autocomplete disablePortal id="combo-box-demo" options={allTrainingTypes} renderInput={(params) => <TextField {...params} label="Training type" />} onChange={(e, newValue) => setTrainingType(newValue)} />
-          <TextField id="outlined-multiline-static" label="Additional comment" multiline rows={4} defaultValue="Write additional comment" fullWidth value={additionalComment} onChange={(e, newValue) => setAdditionalComment(newValue)} />
+          <Autocomplete disablePortal id="combo-box-demo" options={allTrainings} renderInput={(params) => <TextField {...params} label="Trening" />} onChange={(e, newValue) => setTraining(newValue)} />
+          <Autocomplete disablePortal id="combo-box-demo" options={allTrainers} renderInput={(params) => <TextField {...params} label="Trener" />} onChange={(e, newValue) => setTrainer(newValue)} />
+          <Autocomplete disablePortal id="combo-box-demo" options={allTrainingTypes} renderInput={(params) => <TextField {...params} label="Vrsta treninga" />} onChange={(e, newValue) => setTrainingType(newValue)} />
+          <TextField id="outlined-multiline-static" label="Dodatni komentar" multiline rows={4} defaultValue="" fullWidth value={additionalComment} onChange={(e, newValue) => setAdditionalComment(newValue)} />
 
           <Button variant="contained" onClick={handleClick}>
-            Reserve appointment
+            Rezervisi termin
           </Button>
         </Box>
       </Paper>

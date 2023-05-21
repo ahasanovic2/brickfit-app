@@ -24,8 +24,18 @@
   color: white;
 }
 
+.navbar-glavni{
+  background-color: #282c34;
+}
+
 .App-link {
   color: #61dafb;
+}
+
+.naslovna-naslov{
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-top: 0px;
 }
 
 @keyframes App-logo-spin {
