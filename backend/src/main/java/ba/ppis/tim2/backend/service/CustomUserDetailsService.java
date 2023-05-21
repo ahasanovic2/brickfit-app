@@ -22,16 +22,25 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Korisnik korisnik = korisnikRepository.findByEmail(email).orElseThrow(() ->
-                new UsernameNotFoundException("User not found with username or email: "+ email));
+        Korisnik korisnik = null;
+        try {
+            korisnik = korisnikRepository.findByEmail(email).orElseThrow(() ->
+                    new UsernameNotFoundException("User not found with username or email: " + email));
+        } catch (Exception e) {
+            // log the error or handle it
+        }
 
-        Set<GrantedAuthority> authorities = korisnik
-                .getRoles()
-                .stream()
-                .map((role) -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toSet());
+        if (korisnik != null) {
+            Set<GrantedAuthority> authorities = korisnik
+                    .getRoles()
+                    .stream()
+                    .map((role) -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toSet());
 
-        return new org.springframework.security.core.userdetails.User(korisnik.getEmail(),
-                korisnik.getPassword(),
-                authorities);
+            return new org.springframework.security.core.userdetails.User(korisnik.getEmail(),
+                    korisnik.getPassword(),
+                    authorities);
+        } else {
+            throw new UsernameNotFoundException("User not found with username or email: " + email);
+        }
     }
 }

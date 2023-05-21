@@ -27,7 +27,7 @@ function LoginPage() {
     };
   
     try {
-      const response = await axios.post('http://localhost:8080/auth/signin', user);
+      const response = await axios.post('http://localhost:8080/auth/user/signin', user);
       // If status is 200, redirect to new page
       if(response.status === 200) {
         navigate('/newpage');
