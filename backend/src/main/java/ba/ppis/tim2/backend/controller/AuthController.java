@@ -18,6 +18,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -68,6 +69,9 @@ public class AuthController {
         korisnik.setEmail(signUpDto.getEmail());
         korisnik.setPassword(passwordEncoder.encode(signUpDto.getPassword()));
         korisnik.setPrezime(signUpDto.getPrezime());
+        korisnik.setDatumRodjenja(signUpDto.getDatumRodjenja());
+        korisnik.setBrojTelefona(signUpDto.getBrojTelefona());
+        korisnik.setSpol(signUpDto.getSpol());
 
         Role roles = roleRepository.findByName("ROLE_USER").get();
         korisnik.setRoles(Collections.singleton(roles));
