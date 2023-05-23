@@ -86,6 +86,7 @@ function AppbarDefault() {
               <MenuItem onClick={handleCloseNavMenu} component={Link} to="/contactDefault">
                 <Typography textAlign="center">Kontakt</Typography>
               </MenuItem>
+              <Button variant="contained">Contained</Button>
             </Menu>
           </Box>
           <Typography
@@ -115,6 +116,11 @@ function AppbarDefault() {
             </Button>
             <Button onClick={handleCloseNavMenu} component={Link} to="/contactDefault" sx={{ my: 2, color: "white", display: "block", marginLeft: "50px", fontWeight: "bold", fontSize: "16px" }}>
               Kontakt
+            </Button>
+          </Box>
+          <Box style={{ display: "flex" }}>
+            <Button onClick={handleCloseNavMenu} component={Link} to="/login" sx={{ my: 2, color: "white", display: "block", marginLeft: "50px", fontWeight: "bold", fontSize: "16px" }}>
+              Login
             </Button>
           </Box>
         </Toolbar>

@@ -18,6 +18,7 @@ import HomeMachineOrder from "./components/admin/machine/HomeMachineOrder";
 import HomeOverviewUser from "./components/admin/overviewUser/HomeOverviewUser";
 import HomeOverviewMachines from "./components/admin/overviewMachine/HomeOverviewMachines";
 import HomeAddUser from "./components/admin/user/HomeAddUser";
+import HomeLoginDefault from "./components/defaultHome/userLogin/HomeLoginDefault";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/overviewMachine" element={<HomeOverviewMachines />} />
           <Route path="/addUser" element={<HomeAddUser />} />
           <Route path="/user-login" element={<HomeLogin />} />
+          <Route path="/login" element={<HomeLoginDefault />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/user-signup" element={<UserHomeSignup />} />
           <Route path="/admin-signup" element={<AdminHomeSignup />} />
