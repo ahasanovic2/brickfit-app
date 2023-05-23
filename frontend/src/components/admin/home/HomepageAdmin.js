@@ -7,7 +7,7 @@ const HomepageAdmin = () => {
     <div style={{ backgroundImage: `url(${pozadina})`, height: "100vh", backgroundSize: "cover" }}>
       <section className="hero">
         <div className="hero-content">
-          <h1 className="naslovna-naslov">PRIVILEGOVANI REZIM RADA !</h1>
+          <h1 style={{padding: "10px"}} className="naslovna-naslov">PRIVILEGOVANI REŽIM RADA !</h1>
         </div>
       </section>
     </div>
