@@ -191,6 +191,9 @@ function ResponsiveAppBar() {
               <MenuItem onClick={handleCloseNavMenu} component={Link} to="/appointment-reservation">
                 <Typography textAlign="center">Rezervacija termina</Typography>
               </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu} component={Link} to="/review">
+                <Typography textAlign="center">Ostavljanje recenzije</Typography>
+              </MenuItem>
             </Menu>
           </Box>
           <Typography
@@ -223,6 +226,9 @@ function ResponsiveAppBar() {
             </Button>
             <Button onClick={handleCloseNavMenu} component={Link} to="/appointment-reservation" sx={{ my: 2, color: "white", display: "block", marginLeft: "50px", fontWeight: "bold", fontSize: "16px" }}>
               Rezervacija termina
+            </Button>
+            <Button onClick={handleCloseNavMenu} component={Link} to="/review" sx={{ my: 2, color: "white", display: "block", marginLeft: "50px", fontWeight: "bold", fontSize: "16px" }}>
+              Ostavljanje recenzije
             </Button>
           </Box>
           <Box style={{ display: "flex" }}>

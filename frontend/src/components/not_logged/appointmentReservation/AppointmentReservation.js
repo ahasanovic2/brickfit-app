@@ -177,7 +177,7 @@ export default function AppointmentReservation() {
           <Autocomplete disablePortal id="combo-box-demo" options={allTrainings} renderInput={(params) => <TextField {...params} label="Trening" />} onChange={(e, newValue) => setTraining(newValue)} />
           <Autocomplete disablePortal id="combo-box-demo" options={allTrainers} renderInput={(params) => <TextField {...params} label="Trener" />} onChange={(e, newValue) => setTrainer(newValue)} />
           <Autocomplete disablePortal id="combo-box-demo" options={allTrainingTypes} renderInput={(params) => <TextField {...params} label="Vrsta treninga" />} onChange={(e, newValue) => setTrainingType(newValue)} />
-          <TextField id="outlined-multiline-static" label="Dodatni komentar" multiline rows={4} defaultValue="" fullWidth value={additionalComment} onChange={(e, newValue) => setAdditionalComment(newValue)} />
+          <TextField InputLabelProps={{ shrink: true }} id="outlined-multiline-static" label="Dodatni komentar" multiline rows={4} defaultValue="" fullWidth value={additionalComment} onChange={(e, newValue) => setAdditionalComment(newValue)} />
 
           <Button variant="contained" onClick={handleClick}>
             Rezervisi termin

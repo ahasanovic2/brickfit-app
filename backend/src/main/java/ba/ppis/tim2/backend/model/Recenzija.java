@@ -11,8 +11,6 @@ public class Recenzija {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column
-    @Min(value = 1, message = "Ocjena mora biti veća od 0.")
-    @Max(value = 5, message = "Ocjena ne može biti veća od 5.")
     private int ocjena;
     @Column
     private String opis;

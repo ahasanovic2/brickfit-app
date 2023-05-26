@@ -41,7 +41,7 @@ function AppbarAdmin() {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href="/homeAdmin"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -89,13 +89,17 @@ function AppbarAdmin() {
               <MenuItem onClick={handleCloseNavMenu} component={Link} to="/overviewMachine">
                 <Typography textAlign="center">Pregled sprava</Typography>
               </MenuItem>
+
+              <MenuItem onClick={handleCloseNavMenu} component={Link} to="/overviewReview">
+                <Typography textAlign="center">Pregled recenzija</Typography>
+              </MenuItem>
             </Menu>
           </Box>
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="/homeAdmin"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -121,6 +125,10 @@ function AppbarAdmin() {
             </Button>
             <Button onClick={handleCloseNavMenu} component={Link} to="/overviewMachine" sx={{ my: 2, color: "white", display: "block", marginLeft: "50px", fontWeight: "bold", fontSize: "16px" }}>
               Pregled sprava
+            </Button>
+
+            <Button onClick={handleCloseNavMenu} component={Link} to="/overviewReview" sx={{ my: 2, color: "white", display: "block", marginLeft: "50px", fontWeight: "bold", fontSize: "16px" }}>
+              Pregled recenzija
             </Button>
           </Box>
           <Box style={{ display: "flex" }}>
