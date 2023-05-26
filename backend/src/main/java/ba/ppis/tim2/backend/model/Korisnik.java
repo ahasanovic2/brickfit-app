@@ -15,6 +15,17 @@ public class Korisnik {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "username")
+    @NotBlank(message = "Username ne smije biti prazan!")
+    @Size(min = 3, max = 255, message = "Username mora imati barem 3 karaktera")
+    private String username;
+
+    @Column(name = "password")
+    @NotBlank(message = "Password ne smije biti prazan!")
+    @Size(min = 3, max = 255, message = "Password mora imati barem 3 karaktera")
+    private String password;
+
     @Column(name = "ime")
     @NotBlank(message = "Ime ne smije biti prazno!")
     @Size(min = 3, max = 255, message = "Ime mora imati barem 3 karaktera")
@@ -44,6 +55,22 @@ public class Korisnik {
     private List<Recenzija> recenzija;
 
     public Korisnik() {
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getId() {

@@ -17,7 +17,7 @@ export default function Review() {
       opis: komentar,
     };
     console.log(recenzija);
-    fetch("http://localhost:8080/recenzija/4", {
+    fetch("http://localhost:8080/recenzija/1", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(recenzija),

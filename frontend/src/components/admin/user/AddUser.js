@@ -3,6 +3,8 @@ import { Container, Paper, Button, Box, TextField } from "@mui/material";
 
 export default function AddUser() {
   const paperStyle = { padding: "50px 20px", width: 600, margin: "20px auto" };
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [ime, setIme] = useState("");
   const [prezime, setPrezime] = useState("");
   const [email, setEmail] = useState("");
@@ -15,6 +17,8 @@ export default function AddUser() {
   const handleClick = (e) => {
     e.preventDefault();
     const korisnik = {
+      username,
+      password,
       ime,
       prezime,
       email,
@@ -53,6 +57,8 @@ export default function AddUser() {
           noValidate
           autoComplete="off"
         >
+          <TextField id="outlined-basic" label="Username" variant="outlined" value={username} onChange={(e) => setUsername(e.target.value)} fullWidth />
+          <TextField id="outlined-basic" label="Password" variant="outlined" value={password} onChange={(e) => setPassword(e.target.value)} fullWidth />
           <TextField id="outlined-basic" label="Ime" variant="outlined" value={ime} onChange={(e) => setIme(e.target.value)} fullWidth />
           <TextField id="outlined-basic" label="Prezime" variant="outlined" value={prezime} onChange={(e) => setPrezime(e.target.value)} fullWidth />
           <TextField id="outlined-basic" label="E-mail" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} fullWidth />
