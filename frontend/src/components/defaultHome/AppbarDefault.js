@@ -13,10 +13,34 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
+import MovieIcon from "@mui/icons-material/Movie";
+import SearchIcon from "@mui/icons-material/Search";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import Popper from "@mui/material/Popper";
+import Fade from "@mui/material/Fade";
 
 function AppbarDefault() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const [open, setOpen] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl1, setAnchorEl1] = React.useState(null);
+  const [open1, setOpen1] = React.useState(false);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+    setOpen((previousOpen) => !previousOpen);
+  };
+
+  const handleClick1 = (event) => {
+    setAnchorEl1(event.currentTarget);
+    setOpen1((previousOpen) => !previousOpen);
+  };
+
+  const canBeOpen = open && Boolean(anchorEl);
+  const id = canBeOpen ? "transition-popper" : undefined;
+  const id1 = canBeOpen ? "transition-popper1" : undefined;
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -37,26 +61,12 @@ function AppbarDefault() {
     <AppBar position="static" style={{ backgroundColor: "#282c34" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            BRICK FIT
-          </Typography>
+          <a className="ikona" href="/">
+            <MovieIcon fontSize="large" sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}></MovieIcon>
+          </a>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleOpenNavMenu} color="inherit">
+            <IconButton fontSize="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleOpenNavMenu} color="inherit">
               <MenuIcon />
             </IconButton>
             <Menu
@@ -78,49 +88,54 @@ function AppbarDefault() {
               }}
             >
               <MenuItem onClick={handleCloseNavMenu} component={Link} to="/newsDefault">
-                <Typography textAlign="center">Novosti</Typography>
+                <Typography textAlign="center">Filmovi</Typography>
               </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu} component={Link} to="/locationDefault">
-                <Typography textAlign="center">Lokacija</Typography>
+              <MenuItem onClick={handleCloseNavMenu} component={Link} to="/newsDefault">
+                <Typography textAlign="center">Događaji</Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu} component={Link} to="/contactDefault">
-                <Typography textAlign="center">Kontakt</Typography>
+                <Typography textAlign="center">O nama</Typography>
               </MenuItem>
-              <Button variant="contained">Contained</Button>
             </Menu>
           </Box>
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            BRICK FIT
-          </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button onClick={handleCloseNavMenu} component={Link} to="/newsDefault" sx={{ my: 2, color: "white", display: "block", marginLeft: "50px", fontWeight: "bold", fontSize: "16px" }}>
-              Novosti
+              Filmovi
             </Button>
-            <Button onClick={handleCloseNavMenu} component={Link} to="/locationDefault" sx={{ my: 2, color: "white", display: "block", marginLeft: "50px", fontWeight: "bold", fontSize: "16px" }}>
-              Lokacija
+            <Button onClick={handleCloseNavMenu} component={Link} to="/newsDefault" sx={{ my: 2, color: "white", display: "block", marginLeft: "50px", fontWeight: "bold", fontSize: "16px" }}>
+              Događaji
             </Button>
             <Button onClick={handleCloseNavMenu} component={Link} to="/contactDefault" sx={{ my: 2, color: "white", display: "block", marginLeft: "50px", fontWeight: "bold", fontSize: "16px" }}>
-              Kontakt
+              O nama
             </Button>
           </Box>
           <Box style={{ display: "flex" }}>
+            <div className="ikona">
+              <NotificationsIcon aria-describedby={id} type="button" onClick={handleClick} fontSize="large" sx={{ display: { xs: "none", md: "flex", marginTop: "20px", paddingRight: "20px" }, mr: 1 }}></NotificationsIcon>
+              <Popper id={id} open={open} anchorEl={anchorEl} transition sx={{ zIndex: 100 }}>
+                {({ TransitionProps }) => (
+                  <Fade {...TransitionProps} timeout={350}>
+                    <Box sx={{ border: 1, p: 1, bgcolor: "background.paper" }}>Lista notifikacija</Box>
+                  </Fade>
+                )}
+              </Popper>
+            </div>
+            <div className="ikona">
+              <SearchIcon aria-describedby={id1} type="button" onClick={handleClick1} fontSize="large" sx={{ display: { xs: "none", md: "flex", marginTop: "20px", paddingRight: "20px" }, mr: 1 }}></SearchIcon>
+              <Popper id={id1} open={open1} anchorEl={anchorEl1} transition sx={{ zIndex: 100 }}>
+                {({ TransitionProps }) => (
+                  <Fade {...TransitionProps} timeout={350}>
+                    <Box sx={{ border: 1, p: 1, bgcolor: "background.paper" }}>Pretraga</Box>
+                  </Fade>
+                )}
+              </Popper>
+            </div>
             <Button onClick={handleCloseNavMenu} component={Link} to="/login" sx={{ my: 2, color: "white", display: "block", marginLeft: "50px", fontWeight: "bold", fontSize: "16px" }}>
-              Login
+              Prijava
+            </Button>
+            <Button onClick={handleCloseNavMenu} component={Link} to="/register" sx={{ my: 2, color: "white", display: "block", marginLeft: "50px", fontWeight: "bold", fontSize: "16px" }}>
+              Registracija
             </Button>
           </Box>
         </Toolbar>

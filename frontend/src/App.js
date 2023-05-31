@@ -21,6 +21,7 @@ import HomeAddUser from "./components/admin/user/HomeAddUser";
 import HomeLoginDefault from "./components/defaultHome/userLogin/HomeLoginDefault";
 import HomeReview from "./components/not_logged/review/HomeReview";
 import HomeOverviewReview from "./components/admin/overviewReview/HomeOverviewReview";
+import HomeRegisterDefault from "./components/defaultHome/userRegister/HomeRegisterDefault";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           <Route path="/user-login" element={<HomeLogin />} />
           <Route path="/review" element={<HomeReview />} />
           <Route path="/login" element={<HomeLoginDefault />} />
+          <Route path="/register" element={<HomeRegisterDefault />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/user-signup" element={<UserHomeSignup />} />
           <Route path="/admin-signup" element={<AdminHomeSignup />} />

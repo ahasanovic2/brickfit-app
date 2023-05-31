@@ -1,15 +1,28 @@
 import React from "react";
-import gymImage from "../../../images/gym.jpg";
-import pozadina from "../../../images/teretana.png";
+import { Fade } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
+import pozadina from "C:/Users/User/Documents/PNWT/brickfit-app/frontend/src/images/gym.jpg";
+
+const fadeImages = [
+  "https://www.localsyr.com/wp-content/uploads/sites/63/2023/01/GettyImages-485817552.jpg",
+  "https://d3rg18dos0rgue.cloudfront.net/wp-content/uploads/sites/3/2018/03/Roxy-Cinema-Tribeca1.jpg",
+  "https://www.leawo.org/entips/wp-content/uploads/2021/04/side-by-side-3d-watch-in-cinema.jpg",
+];
 
 const HomepageDefault = () => {
   return (
-    <div style={{ backgroundImage: `url(${pozadina})`, height: "100vh", backgroundSize: "cover" }}>
-      <section className="hero">
-        <div className="hero-content">
-          <h1 style={{padding: "10px"}} className="naslovna-naslov">Dobro došli u Brick Fit!</h1>
+    <div className="slide-container">
+      <Fade>
+        <div className="each-fade">
+          <img style={{ width: "100%", height: "1000px" }} src={fadeImages[0]} />
         </div>
-      </section>
+        <div className="each-fade">
+          <img style={{ width: "100%", height: "1000px" }} src={fadeImages[1]} />
+        </div>
+        <div className="each-fade">
+          <img style={{ width: "100%", height: "1000px" }} src={fadeImages[2]} />
+        </div>
+      </Fade>
     </div>
   );
 };

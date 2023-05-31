@@ -63,9 +63,7 @@ export default function AddUser() {
           <TextField id="outlined-basic" label="Prezime" variant="outlined" value={prezime} onChange={(e) => setPrezime(e.target.value)} fullWidth />
           <TextField id="outlined-basic" label="E-mail" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} fullWidth />
           <TextField id="outlined-basic" label="Adresa" variant="outlined" value={adresa} onChange={(e) => setAdresa(e.target.value)} fullWidth />
-          <TextField id="outlined-basic" label="Broj telefona" variant="outlined" value={brojTelefona} onChange={(e) => setBrojTelefona(e.target.value)} fullWidth />
           <TextField id="outlined-basic" label="Datum rođenja" variant="outlined" value={datumRodjenja} onChange={(e) => setDatumRodjenja(e.target.value)} fullWidth />
-          <TextField id="outlined-basic" label="Spol" variant="outlined" value={spol} onChange={(e) => setSpol(e.target.value)} fullWidth />
           <Button variant="contained" onClick={handleClick}>
             Dodaj
           </Button>

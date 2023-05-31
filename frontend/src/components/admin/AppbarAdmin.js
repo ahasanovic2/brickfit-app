@@ -13,6 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
+import MovieIcon from "@mui/icons-material/Movie";
 
 function AppbarAdmin() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -37,23 +38,9 @@ function AppbarAdmin() {
     <AppBar position="static" style={{ backgroundColor: "#282c34" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/homeAdmin"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            BRICK FIT
-          </Typography>
+          <a className="ikona" href="/">
+            <MovieIcon size="small" sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}></MovieIcon>
+          </a>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleOpenNavMenu} color="inherit">
@@ -111,24 +98,15 @@ function AppbarAdmin() {
               textDecoration: "none",
             }}
           >
-            BRICK FIT
+            HOME
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button onClick={handleCloseNavMenu} component={Link} to="/addUser" sx={{ my: 2, color: "white", display: "block", marginLeft: "50px", fontWeight: "bold", fontSize: "16px" }}>
               Dodaj korisnika
             </Button>
-            <Button onClick={handleCloseNavMenu} component={Link} to="/machineOrder" sx={{ my: 2, color: "white", display: "block", marginLeft: "50px", fontWeight: "bold", fontSize: "16px" }}>
-              Naruci spravu
-            </Button>
+
             <Button onClick={handleCloseNavMenu} component={Link} to="/overviewUser" sx={{ my: 2, color: "white", display: "block", marginLeft: "50px", fontWeight: "bold", fontSize: "16px" }}>
               Pregled korisnika
-            </Button>
-            <Button onClick={handleCloseNavMenu} component={Link} to="/overviewMachine" sx={{ my: 2, color: "white", display: "block", marginLeft: "50px", fontWeight: "bold", fontSize: "16px" }}>
-              Pregled sprava
-            </Button>
-
-            <Button onClick={handleCloseNavMenu} component={Link} to="/overviewReview" sx={{ my: 2, color: "white", display: "block", marginLeft: "50px", fontWeight: "bold", fontSize: "16px" }}>
-              Pregled recenzija
             </Button>
           </Box>
           <Box style={{ display: "flex" }}>
